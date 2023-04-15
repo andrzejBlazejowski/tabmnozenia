@@ -8,7 +8,9 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
-            Zadanie_1_7();
+            Zadanie_1_8_A();
+            Zadanie_1_8_B();
+            Zadanie_1_8_C();
         }
 
         static void Zadanie_1_1()
@@ -202,6 +204,35 @@ namespace Lab1
 
             Console.WriteLine("Twój BMI wynosi {0:F2}  Wskazuje to na: {1}", BMI, BMIMessage);
         }
+        static void Zadanie_1_8_A()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write(i);
+            }
+            Console.WriteLine();
+        }
+        static void Zadanie_1_8_B()
+        {
+            int i = 0;
+            while (i < 10)
+            {
+                Console.Write(i);
+                i++;
+            }
+            Console.WriteLine();
 
+        }
+        static void Zadanie_1_8_C()
+        {
+            int i = 0;
+            do
+            {
+                Console.Write(i);
+                i++;
+            } while (i < 10);
+            Console.WriteLine();
+
+        }
     }
 }
