@@ -8,9 +8,10 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
-            Zadanie_1_8_A();
-            Zadanie_1_8_B();
-            Zadanie_1_8_C();
+            int limit = 14;
+            Zadanie_1_9_A(limit);
+            Zadanie_1_9_B(limit);
+            Zadanie_1_9_C(limit);
         }
 
         static void Zadanie_1_1()
@@ -204,6 +205,7 @@ namespace Lab1
 
             Console.WriteLine("Twój BMI wynosi {0:F2}  Wskazuje to na: {1}", BMI, BMIMessage);
         }
+
         static void Zadanie_1_8_A()
         {
             for (int i = 0; i < 10; i++)
@@ -234,5 +236,60 @@ namespace Lab1
             Console.WriteLine();
 
         }
+
+        static void Zadanie_1_9_A(int maxValue)
+        {
+            int sum = 0;
+            int topN;
+            for (int i = 0; ; i++)
+            {
+                if((sum + i) <= maxValue)
+                    sum += i;
+                else 
+                {
+                    topN = i - 1;
+                    break;
+                }
+            }
+            Console.WriteLine("największa suma nie przekraczająca n ({0}) wynosi {1}, natomiast n wynosi : {2}", maxValue, sum, topN);
+        }
+        static void Zadanie_1_9_B(int maxValue)
+        {
+            int sum = 0;
+            int topN;
+            int i = 0;
+            while (true)
+            {
+                if ((sum + i) <= maxValue)
+                    sum += i;
+                else
+                {
+                    topN = i - 1;
+                    break;
+                }
+                i++;
+            }
+            Console.WriteLine("największa suma nie przekraczająca n ({0}) wynosi {1}, natomiast n wynosi : {2}", maxValue, sum, topN);
+
+        }
+        static void Zadanie_1_9_C(int maxValue)
+        {
+            int sum = 0;
+            int topN;
+            int i = 0;
+            do
+            {
+                if ((sum + i) <= maxValue)
+                    sum += i;
+                else
+                {
+                    topN = i - 1;
+                    break;
+                }
+                i++;
+            } while (true);
+            Console.WriteLine("największa suma nie przekraczająca n ({0}) wynosi {1}, natomiast n wynosi : {2}", maxValue, sum, topN);
+        }
+
     }
 }
