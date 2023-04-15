@@ -6,7 +6,7 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
-            Zadanie_1_3();
+            Zadanie_1_4();
         }
 
         static void Zadanie_1_1()
@@ -73,6 +73,23 @@ namespace Lab1
         static double getGrossValue(double nettoValue, double vatRate)
         {
             return getVatValue(nettoValue, vatRate) + nettoValue;
+        }
+        static void Zadanie_1_4()
+        {
+            Console.WriteLine("Podaj liczbę naturalną, a napiszę Ci czy jest parzysta: ");
+            string consoleInput = Console.ReadLine();
+            int number;
+            if (!int.TryParse(consoleInput, out number))
+            {
+                Console.WriteLine("Niestety wprowadziłeś niepoprawne dane");
+                return;
+            }
+            Console.WriteLine("");
+
+            if (number % 2 == 0)
+                Console.WriteLine("liczba jest parzysta");
+            else 
+                Console.WriteLine("liczba jest nie parzysta");
         }
     }
 }
