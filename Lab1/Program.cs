@@ -8,7 +8,7 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
-            Zadanie_1_5();
+            Zadanie_1_6();
         }
 
         static void Zadanie_1_1()
@@ -133,6 +133,61 @@ namespace Lab1
                 case 7:
                     Console.WriteLine("Niedziela");
                     break;
+            }
+        }
+        static void Zadanie_1_6()
+        {
+            Console.WriteLine("**************  Obliczanie BMI  **************");
+            Console.Write("Podaj wzrost w metrach np. 1,60           -> ");
+
+            string consoleInput = Console.ReadLine();
+            double height;
+            if (!double.TryParse(consoleInput, out height))
+            {
+                Console.WriteLine("Niestety niepoprawną liczbę");
+                return;
+            }
+
+            Console.Write("Podaj swoją wage w kilogramach np. 60     -> ");
+            consoleInput = Console.ReadLine();
+            int weight;
+            if (!int.TryParse(consoleInput, out weight))
+            {
+                Console.WriteLine("Niestety niepoprawną liczbę");
+                return;
+            }
+
+            double BMI = getBMI(height, weight);
+            string BMIMessage = getBMIText(BMI);
+
+            Console.WriteLine("Twój BMI wynosi {0:F2}  Wskazuje to na: {1}", BMI, BMIMessage);
+        }
+        static double getBMI(double height, int weight)
+        {
+            return weight / (height * height);
+        }
+        static string getBMIText(double BMI)
+        {
+            switch (BMI)
+            {
+                case <= 15:
+                    return "wygłodzenie";
+                case >15 and <= 17.4:
+                    return "wychudzenie (spowodowane zwykle przez ciężką chorobe lub anoreksję)";
+                case > 17.4 and <= 18.5:
+                    return "niedowaga";
+                case > 18.5 and <= 24.9:
+                    return "wartość prawidłowa";
+                case > 24.9 and <= 29.9:
+                    return "nadwaga";
+                case > 29.9 and <= 34.9:
+                    return "I stopień otyłości";
+                case > 34.9 and <= 39.9:
+                    return "II stopień otyłości";
+                case > 39.9:
+                    return "III stopień otyłości (Otyłość skrajna)";
+                default:
+                    return "Niestety coś poszło nie tak.";
             }
         }
     }
