@@ -8,7 +8,7 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
-            Zadanie_1_6();
+            Zadanie_1_7();
         }
 
         static void Zadanie_1_1()
@@ -135,27 +135,12 @@ namespace Lab1
                     break;
             }
         }
-        static void Zadanie_1_6()
+        static void Zadanie_1_6(double height, int weight)
         {
             Console.WriteLine("**************  Obliczanie BMI  **************");
-            Console.Write("Podaj wzrost w metrach np. 1,60           -> ");
+            Console.Write("Podaj wzrost w metrach np. 1,60           -> {height:F2}", height);
 
-            string consoleInput = Console.ReadLine();
-            double height;
-            if (!double.TryParse(consoleInput, out height))
-            {
-                Console.WriteLine("Niestety niepoprawną liczbę");
-                return;
-            }
-
-            Console.Write("Podaj swoją wage w kilogramach np. 60     -> ");
-            consoleInput = Console.ReadLine();
-            int weight;
-            if (!int.TryParse(consoleInput, out weight))
-            {
-                Console.WriteLine("Niestety niepoprawną liczbę");
-                return;
-            }
+            Console.Write("Podaj swoją wage w kilogramach np. 60     -> {weight:F2}", weight);
 
             double BMI = getBMI(height, weight);
             string BMIMessage = getBMIText(BMI);
@@ -190,5 +175,33 @@ namespace Lab1
                     return "Niestety coś poszło nie tak.";
             }
         }
+        static void Zadanie_1_7()
+        {
+            Console.WriteLine("**************  Obliczanie BMI  **************");
+            Console.Write("Podaj wzrost w metrach np. 1,60           -> ");
+
+            string consoleInput = Console.ReadLine();
+            double height;
+            if (!double.TryParse(consoleInput, out height))
+            {
+                Console.WriteLine("Niestety niepoprawną liczbę");
+                return;
+            }
+
+            Console.Write("Podaj swoją wage w kilogramach np. 60     -> ");
+            consoleInput = Console.ReadLine();
+            int weight;
+            if (!int.TryParse(consoleInput, out weight))
+            {
+                Console.WriteLine("Niestety niepoprawną liczbę");
+                return;
+            }
+
+            double BMI = getBMI(height, weight);
+            string BMIMessage = getBMIText(BMI);
+
+            Console.WriteLine("Twój BMI wynosi {0:F2}  Wskazuje to na: {1}", BMI, BMIMessage);
+        }
+
     }
 }
