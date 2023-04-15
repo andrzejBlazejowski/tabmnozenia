@@ -8,10 +8,10 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
-            int limit = 14;
-            Zadanie_1_9_A(limit);
-            Zadanie_1_9_B(limit);
-            Zadanie_1_9_C(limit);
+            int number = 14;
+            Zadanie_1_10(number);
+            Zadanie_1_10(3);
+            Zadanie_1_10(43);
         }
 
         static void Zadanie_1_1()
@@ -290,6 +290,102 @@ namespace Lab1
             } while (true);
             Console.WriteLine("największa suma nie przekraczająca n ({0}) wynosi {1}, natomiast n wynosi : {2}", maxValue, sum, topN);
         }
+        static void Zadanie_1_10(int number)
+        {
+            if ( number > 99 || number < 1 ) 
+            {
+                Console.WriteLine("Nieprawidłowe dane wejściowe");
+                return;
+            }
+            int firstDigit = number / 10;
+            int secondDigit = number % 10;
+            Console.WriteLine("{0}",getNumberInWords(firstDigit, secondDigit));
 
+        }
+        static string getNumberInWords(int firstDigit, int secondDigit)
+        {
+            if (firstDigit != 1) { 
+                return getTensName(firstDigit) + " " + getUnityName(secondDigit);
+            }
+            return getTennsName(secondDigit) ;
+        }
+        static string getTennsName(int tens)
+        {
+            switch (tens)
+            {
+                case 1:
+                    return "jedenaście";
+                case 2:
+                    return "dwanaście";
+                case 3:
+                    return "trzynaście";
+                case 4:
+                    return "czternaście";
+                case 5:
+                    return "piętnaście";
+                case 6:
+                    return "szesnaście";
+                case 7:
+                    return "siedemnaście";
+                case 8:
+                    return "osiemnaście";
+                case 9:
+                    return "dziewiętnaście";
+                default:
+                    return "";
+            }
+        }
+        static string getTensName(int tens)
+        {
+            switch (tens)
+            {
+                case 1:
+                    return "dziesięć";
+                case 2:
+                    return "dwadzieścia";
+                case 3:
+                    return "trzydzieści";
+                case 4:
+                    return "czterydzieści";
+                case 5:
+                    return "pięćdziesiąt";
+                case 6:
+                    return "sześćdziesiąt";
+                case 7:
+                    return "siedemdziesiąt";
+                case 8:
+                    return "osiemdziesiąt";
+                case 9:
+                    return "dziewięćdziesiąt";
+                default:
+                    return "";
+            }
+        }
+        static string getUnityName(int unity)
+        {
+            switch (unity)
+            {
+                case 1:
+                    return "jeden";
+                case 2:
+                    return "dwa";
+                case 3:
+                    return "trzy";
+                case 4:
+                    return "cztery";
+                case 5:
+                    return "pięć";
+                case 6:
+                    return "sześć";
+                case 7:
+                    return "siedem";
+                case 8:
+                    return "osiem";
+                case 9:
+                    return "dziewięć";
+                default:
+                    return "";
+            }
+        }
     }
 }
