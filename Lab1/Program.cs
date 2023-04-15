@@ -1,12 +1,14 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System;
+
 namespace Lab1
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Zadanie_1_4();
+            Zadanie_1_5();
         }
 
         static void Zadanie_1_1()
@@ -90,6 +92,48 @@ namespace Lab1
                 Console.WriteLine("liczba jest parzysta");
             else 
                 Console.WriteLine("liczba jest nie parzysta");
+        }
+        static void Zadanie_1_5()
+        {
+            Console.WriteLine("Podaj liczbę naturalną (w zakresie od 1 do 7) a napiszę Ci jaki dzień tygodnia reprezentuje");
+            string consoleInput = Console.ReadLine();
+            int weekDay;
+            if (!int.TryParse(consoleInput, out weekDay))
+            {
+                Console.WriteLine("Niestety niepoprawną liczbę");
+                return;
+            }
+            if (weekDay > 7  || weekDay < 1)
+            {
+                Console.WriteLine("Niestety wprowadziłeś liczbę z poza zakresu (1-7)");
+                return;
+            }
+
+            Console.WriteLine("");
+            switch (weekDay)
+            {
+                case 1:
+                    Console.WriteLine("Poniedziałek");
+                    break;
+                case 2:
+                    Console.WriteLine("Wtorek");
+                    break;
+                case 3:
+                    Console.WriteLine("Środa");
+                    break;
+                case 4:
+                    Console.WriteLine("Czwartek");
+                    break;
+                case 5:
+                    Console.WriteLine("Piątek");
+                    break;
+                case 6:
+                    Console.WriteLine("Sobota");
+                    break;
+                case 7:
+                    Console.WriteLine("Niedziela");
+                    break;
+            }
         }
     }
 }
