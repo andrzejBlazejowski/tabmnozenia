@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using System;
+using System.Text.RegularExpressions;
 
 namespace Lab1
 {
@@ -8,10 +9,7 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
-            int number = 14;
-            Zadanie_1_10(number);
-            Zadanie_1_10(3);
-            Zadanie_1_10(43);
+            Zadanie2_2();
         }
 
         static void Zadanie_1_1()
@@ -67,11 +65,11 @@ namespace Lab1
             Console.WriteLine("");
 
 
-            Console.WriteLine("Dla Podanych wartości kwota VAT wynosi: {0:F2}, natomiast kwota brutto wynosi: {1:F2}", 
-                getVatValue(netto,vatRate), 
+            Console.WriteLine("Dla Podanych wartości kwota VAT wynosi: {0:F2}, natomiast kwota brutto wynosi: {1:F2}",
+                getVatValue(netto, vatRate),
                 getGrossValue(netto, vatRate));
         }
-        static double getVatValue(double nettoValue, double vatRate) 
+        static double getVatValue(double nettoValue, double vatRate)
         {
             return nettoValue * vatRate / 100;
         }
@@ -93,7 +91,7 @@ namespace Lab1
 
             if (number % 2 == 0)
                 Console.WriteLine("liczba jest parzysta");
-            else 
+            else
                 Console.WriteLine("liczba jest nie parzysta");
         }
         static void Zadanie_1_5()
@@ -106,7 +104,7 @@ namespace Lab1
                 Console.WriteLine("Niestety niepoprawną liczbę");
                 return;
             }
-            if (weekDay > 7  || weekDay < 1)
+            if (weekDay > 7 || weekDay < 1)
             {
                 Console.WriteLine("Niestety wprowadziłeś liczbę z poza zakresu (1-7)");
                 return;
@@ -160,7 +158,7 @@ namespace Lab1
             {
                 case <= 15:
                     return "wygłodzenie";
-                case >15 and <= 17.4:
+                case > 15 and <= 17.4:
                     return "wychudzenie (spowodowane zwykle przez ciężką chorobe lub anoreksję)";
                 case > 17.4 and <= 18.5:
                     return "niedowaga";
@@ -243,9 +241,9 @@ namespace Lab1
             int topN;
             for (int i = 0; ; i++)
             {
-                if((sum + i) <= maxValue)
+                if ((sum + i) <= maxValue)
                     sum += i;
-                else 
+                else
                 {
                     topN = i - 1;
                     break;
@@ -292,22 +290,23 @@ namespace Lab1
         }
         static void Zadanie_1_10(int number)
         {
-            if ( number > 99 || number < 1 ) 
+            if (number > 99 || number < 1)
             {
                 Console.WriteLine("Nieprawidłowe dane wejściowe");
                 return;
             }
             int firstDigit = number / 10;
             int secondDigit = number % 10;
-            Console.WriteLine("{0}",getNumberInWords(firstDigit, secondDigit));
+            Console.WriteLine("{0}", getNumberInWords(firstDigit, secondDigit));
 
         }
         static string getNumberInWords(int firstDigit, int secondDigit)
         {
-            if (firstDigit != 1) { 
+            if (firstDigit != 1)
+            {
                 return getTensName(firstDigit) + " " + getUnityName(secondDigit);
             }
-            return getTennsName(secondDigit) ;
+            return getTennsName(secondDigit);
         }
         static string getTennsName(int tens)
         {
@@ -387,5 +386,174 @@ namespace Lab1
                     return "";
             }
         }
+
+
+        static void Zadanie1_11_A()
+        {
+            string[] cards = new string[5];
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("Podaj karte (as, król, dama, walet, dziesiątka lub dziewiątka): ");
+                string consoleInput = Console.ReadLine();
+                if (!isCardValid(consoleInput))
+                {
+                    Console.WriteLine("Podałeś nie właściwą karte (as, król, dama, walet, dziesiątka lub dziewiątka)");
+                    return;
+                }
+                else {
+                    cards[i] = consoleInput;
+                }
+            }
+            int points = getPointsFromNames(cards);
+
+            Console.WriteLine("Uzyskałeś następującą ilość punktów : {0}", points);
+        }
+        static bool isCardValid(string cardName)
+        {
+            switch (cardName)
+            {
+                case "as":
+                case "dziesiątka":
+                case "dziewiątka":
+                case "król":
+                case "dama":
+                case "walet":
+                    return true;
+                default:
+                    return false;
+            }
+        }
+        static int getPointsFromName(string name)
+        {
+            switch (name)
+            {
+                case "as":
+                    return 11;
+                case "dziesiątka":
+                    return 10;
+                case "król":
+                    return 4;
+                case "dama":
+                    return 3;
+                case "walet":
+                    return 2;
+                default:
+                    return 0;
+            }
+
+        }
+        static int getPointsFromNames(string names)
+        {           
+            return getPointsFromNames(names.Split(","));
+        }
+        static int getPointsFromNames(string[] names)
+        {
+            int sum = 0;
+            for (int i = 0; i < names.Length; i++)
+            {
+                sum += getPointsFromName(names[i]);
+            }
+            return sum;
+        }
+        static void Zadanie1_11_B()
+        {
+            int cardsLength = 0;
+
+            Console.Write("Podaj ilość kart do wylosowania: ");
+            string consoleInput = Console.ReadLine();
+            if (!int.TryParse(consoleInput, out cardsLength))
+            {
+                Console.WriteLine("Niestety wprowadziłeś niepoprawne dane");
+                return;
+            }
+
+            Console.Write("Wylosowano karty : ");
+            string[] cards = new string[cardsLength];
+            for (int i = 0; i < cardsLength; i++)
+            {
+                cards[i] = GetRandomStringCardName();
+                Console.Write("{0}{1} ", cards[i], i==cardsLength? "" : ",");
+            }
+            int points = getPointsFromNames(cards);
+            Console.WriteLine();
+
+            Console.WriteLine("Uzyskałeś następującą ilość punktów : {0}", points);
+
+        }
+        static string GetRandomStringCardName()
+        {
+            string[] strings = new string[] { "as", "król", "dama", "walet", "dziesiątka", "dziewiątka" };
+            Random random = new Random();
+            int index = random.Next(strings.Length);
+            return strings[index];
+        }
+
+        static void Zadanie2_1()
+        {
+            int arrLength = 0;
+
+            Console.Write("Podaj ilość elementów tablicy: ");
+            string consoleInput = Console.ReadLine();
+            if (!int.TryParse(consoleInput, out arrLength))
+            {
+                Console.WriteLine("Niestety wprowadziłeś niepoprawne dane");
+                return;
+            }
+
+            int[] elements = new int[arrLength];
+            for (int i = 0; i < arrLength; i++)
+            {
+                int elem;
+                
+                Console.Write("Podaj kolejny element : ");
+                consoleInput = Console.ReadLine();
+                if (!int.TryParse(consoleInput, out elem))
+                {
+                    Console.WriteLine("Niestety wprowadziłeś niepoprawne dane");
+                    return;
+                }
+                elements[i] = elem;
+            }
+            
+            int sum = getSum(elements);
+            double avarage = getAverage(elements);
+
+            Console.WriteLine();
+            Console.Write("suma z podanych elementów jest równa: {0}, \n natomiast średnia z podanych elementów wynosi : {1:F2}", sum, avarage);
+
+        }
+        static int getSum(int[] array)
+        {
+            int sum = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                sum += array[i];
+            }
+            return sum;
+        }
+        static double getAverage(int[] array)
+        {
+            int sum = getSum(array);
+            return (double)sum / array.Length;
+        }
+        static void Zadanie2_2()
+        {
+            Console.Write("Podaj tekst : ");
+            string consoleInput = Console.ReadLine();
+            string[] inputText = consoleInput.Split();
+
+            Console.WriteLine();
+            Console.Write("tekst wynikowy : ");
+            for (int i = 0; i < inputText.Length; i++)
+            {
+                inputText[i] = clearStringFromSpecialChars(inputText[i].Trim());
+                Console.Write(inputText[i]);
+            }
+        }
+        static string clearStringFromSpecialChars(string input)
+        {
+            return Regex.Replace(input, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled);
+        }
     }
+
 }
