@@ -9,7 +9,7 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
-            Zadanie2_2();
+            Zadanie2_3();
         }
 
         static void Zadanie_1_1()
@@ -490,8 +490,7 @@ namespace Lab1
 
         static void Zadanie2_1()
         {
-            int arrLength = 0;
-
+            int arrLength;
             Console.Write("Podaj ilość elementów tablicy: ");
             string consoleInput = Console.ReadLine();
             if (!int.TryParse(consoleInput, out arrLength))
@@ -553,6 +552,41 @@ namespace Lab1
         static string clearStringFromSpecialChars(string input)
         {
             return Regex.Replace(input, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled);
+        }
+        static void Zadanie2_3()
+        {
+            int rowsCount;
+            int colsCount;
+
+            Console.Write("Podaj ilość wierszy: ");
+            string consoleInput = Console.ReadLine();
+            if (!int.TryParse(consoleInput, out rowsCount) || rowsCount > 99 || rowsCount < 1)
+            {
+                Console.WriteLine("Niestety wprowadziłeś niepoprawne dane");
+                return;
+            }
+            Console.Write("Podaj ilość kolumn: ");
+            consoleInput = Console.ReadLine();
+            if (!int.TryParse(consoleInput, out colsCount) || colsCount > 99 || colsCount < 1)
+            {
+                Console.WriteLine("Niestety wprowadziłeś niepoprawne dane");
+                return;
+            }
+
+            int[,] tabliczby = new int[rowsCount+1, colsCount+1];
+
+            for (int i = 1; i <= rowsCount; i++)
+            {
+                for (int j = 1; j <= colsCount; j++)
+                {
+                    tabliczby[i, j] = j * i;
+                    Console.Write("{0,3:D}", j * i);
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine();
+            Console.ReadKey();
         }
     }
 
