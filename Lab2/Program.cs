@@ -3,6 +3,22 @@ internal class Program
 {
     private static void Main(string[] args)
     {
+        testujOdcinek();
+    }
+    static void testujOdcinek() 
+    {
+        Odcinek odcinek = new Odcinek();
+        Odcinek odcinek2 = new Odcinek(2,4,1,5);
+        Odcinek odcinek3 = new Odcinek(1,1,1,1);
+        odcinek3.ZmianaPoczatku(2, 2);
+        odcinek3.ZmianaKonca(3, 3);
+
+        odcinek.Wypisz();
+        odcinek2.Wypisz();
+        odcinek3.Wypisz();
+    }
+    static void testujPudelko()
+    {
 
         Pudelko pudelko1 = new Pudelko();
         pudelko1.UstawWysokosc(12.3);
@@ -74,5 +90,29 @@ internal class Program
             Pudelko.dajIloscStworzonychPudelek());
 
         Console.ReadLine();
+
+    }
+
+    static void testujWektor()
+    {
+        double[] dane1 = { 1, 2, 3 };
+        Wektor w1 = new Wektor(3, dane1);
+        Console.Write("Wektor 1: ");
+        w1.show();
+        Console.WriteLine();
+
+        double[] dane2 = { 4, 5, 6 };
+        Wektor w2 = new Wektor(3, dane2);
+        Console.Write("Wektor 2: ");
+        w2.show();
+        Console.WriteLine();
+
+        Console.Write("Suma współrzędnych wektora 1: ");
+        Console.WriteLine(w1.sum());
+
+        Wektor w3 = w1.add(w2);
+        Console.Write("Wektor 3 (wynik dodawania wektorów 1 i 2): ");
+        w3.show();
+        Console.WriteLine();
     }
 }
