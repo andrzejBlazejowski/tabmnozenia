@@ -9,7 +9,27 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
-            Zadanie2_3();
+            //Zadanie_1_1();
+            //Zadanie_1_2();
+            //Zadanie_1_3();
+            //Zadanie_1_4();
+            //Zadanie_1_5();
+            //Zadanie_1_6(1.4,60);
+            //Zadanie_1_7();
+            //Zadanie_1_8_A();
+            //Zadanie_1_8_B();
+            //Zadanie_1_8_C();
+            //Zadanie_1_9_A(22);
+            //Zadanie_1_9_B(22);
+            //Zadanie_1_9_C(22);
+            //Zadanie_1_10(4);
+            //Zadanie1_11_A();
+            //Zadanie1_11_B();
+            //Zadanie1_11_B();
+            //Zadanie2_1();
+            //Zadanie2_2();
+            //Zadanie2_3();
+            Zadanie2_4();
         }
 
         static void Zadanie_1_1()
@@ -19,6 +39,7 @@ namespace Lab1
 
             Console.WriteLine("wprowadziłeś następujący tekst : ");
             Console.WriteLine(input);
+            Console.ReadKey();
         }
 
         static void Zadanie_1_2()
@@ -37,6 +58,7 @@ namespace Lab1
             {
                 Console.WriteLine("Niestety wprowadziłeś niepoprawne dane");
             }
+            Console.ReadKey();
         }
         static double convertKmPerHToMPerS(double kmPerH)
         {
@@ -68,6 +90,7 @@ namespace Lab1
             Console.WriteLine("Dla Podanych wartości kwota VAT wynosi: {0:F2}, natomiast kwota brutto wynosi: {1:F2}",
                 getVatValue(netto, vatRate),
                 getGrossValue(netto, vatRate));
+            Console.ReadKey();
         }
         static double getVatValue(double nettoValue, double vatRate)
         {
@@ -93,6 +116,7 @@ namespace Lab1
                 Console.WriteLine("liczba jest parzysta");
             else
                 Console.WriteLine("liczba jest nie parzysta");
+            Console.ReadKey();
         }
         static void Zadanie_1_5()
         {
@@ -135,6 +159,7 @@ namespace Lab1
                     Console.WriteLine("Niedziela");
                     break;
             }
+            Console.ReadKey();
         }
         static void Zadanie_1_6(double height, int weight)
         {
@@ -147,6 +172,7 @@ namespace Lab1
             string BMIMessage = getBMIText(BMI);
 
             Console.WriteLine("Twój BMI wynosi {0:F2}  Wskazuje to na: {1}", BMI, BMIMessage);
+            Console.ReadKey();
         }
         static double getBMI(double height, int weight)
         {
@@ -202,6 +228,7 @@ namespace Lab1
             string BMIMessage = getBMIText(BMI);
 
             Console.WriteLine("Twój BMI wynosi {0:F2}  Wskazuje to na: {1}", BMI, BMIMessage);
+            Console.ReadKey();
         }
 
         static void Zadanie_1_8_A()
@@ -211,6 +238,7 @@ namespace Lab1
                 Console.Write(i);
             }
             Console.WriteLine();
+            Console.ReadKey();
         }
         static void Zadanie_1_8_B()
         {
@@ -221,6 +249,7 @@ namespace Lab1
                 i++;
             }
             Console.WriteLine();
+            Console.ReadKey();
 
         }
         static void Zadanie_1_8_C()
@@ -232,6 +261,7 @@ namespace Lab1
                 i++;
             } while (i < 10);
             Console.WriteLine();
+            Console.ReadKey();
 
         }
 
@@ -250,6 +280,7 @@ namespace Lab1
                 }
             }
             Console.WriteLine("największa suma nie przekraczająca n ({0}) wynosi {1}, natomiast n wynosi : {2}", maxValue, sum, topN);
+            Console.ReadKey();
         }
         static void Zadanie_1_9_B(int maxValue)
         {
@@ -269,6 +300,7 @@ namespace Lab1
             }
             Console.WriteLine("największa suma nie przekraczająca n ({0}) wynosi {1}, natomiast n wynosi : {2}", maxValue, sum, topN);
 
+            Console.ReadKey();
         }
         static void Zadanie_1_9_C(int maxValue)
         {
@@ -287,6 +319,7 @@ namespace Lab1
                 i++;
             } while (true);
             Console.WriteLine("największa suma nie przekraczająca n ({0}) wynosi {1}, natomiast n wynosi : {2}", maxValue, sum, topN);
+            Console.ReadKey();
         }
         static void Zadanie_1_10(int number)
         {
@@ -299,6 +332,7 @@ namespace Lab1
             int secondDigit = number % 10;
             Console.WriteLine("{0}", getNumberInWords(firstDigit, secondDigit));
 
+            Console.ReadKey();
         }
         static string getNumberInWords(int firstDigit, int secondDigit)
         {
@@ -407,6 +441,7 @@ namespace Lab1
             int points = getPointsFromNames(cards);
 
             Console.WriteLine("Uzyskałeś następującą ilość punktów : {0}", points);
+            Console.ReadKey();
         }
         static bool isCardValid(string cardName)
         {
@@ -479,6 +514,7 @@ namespace Lab1
 
             Console.WriteLine("Uzyskałeś następującą ilość punktów : {0}", points);
 
+            Console.ReadKey();
         }
         static string GetRandomStringCardName()
         {
@@ -520,6 +556,7 @@ namespace Lab1
             Console.WriteLine();
             Console.Write("suma z podanych elementów jest równa: {0}, \n natomiast średnia z podanych elementów wynosi : {1:F2}", sum, avarage);
 
+            Console.ReadKey();
         }
         static int getSum(int[] array)
         {
@@ -548,6 +585,7 @@ namespace Lab1
                 inputText[i] = clearStringFromSpecialChars(inputText[i].Trim());
                 Console.Write(inputText[i]);
             }
+            Console.ReadKey();
         }
         static string clearStringFromSpecialChars(string input)
         {
@@ -580,13 +618,34 @@ namespace Lab1
                 for (int j = 1; j <= colsCount; j++)
                 {
                     tabliczby[i, j] = j * i;
-                    Console.Write("{0,3:D}", j * i);
+                    Console.Write("{0,3:D}", tabliczby[i, j]);
                 }
                 Console.WriteLine();
             }
 
             Console.WriteLine();
             Console.ReadKey();
+        }
+        static void Zadanie2_4()
+        {
+            int[][] numbers = new int[5][];
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                string numberStr = getRandomInt(0, 1000).ToString();
+
+                int[] digits = new int[numberStr.Length];
+                for (int j = 0; j < digits.Length; j++)
+                {
+                    digits[j] = numberStr[j];
+                }
+                numbers[i] = digits;
+            }
+        }
+        static int getRandomInt(int start, int end)
+        {
+            Random random = new Random();
+            return random.Next(start, end + 1);
         }
     }
 
