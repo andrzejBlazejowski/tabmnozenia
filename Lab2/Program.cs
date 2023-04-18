@@ -5,7 +5,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        testujzamowienie();
+        testujKonto();
     }
     static void testujOdcinek() 
     {
@@ -146,4 +146,19 @@ internal class Program
 
         zamowienie.wypiszInformacje();
     }
+    static void testujKonto()
+    {
+
+        Konto konto = new Konto("84382348238834", "Alojzy Tateusz", DateTime.Today);
+        konto.WypiszInformacje();
+        Console.WriteLine(konto.ToString());
+    }
+    static void testujTransakcje()
+    {
+
+        Konto konto = new Konto("84382348238834", "Alojzy Tateusz", DateTime.Today);
+        konto.WypiszInformacje();
+        Console.WriteLine(konto.ToString());
+    }
+
 }
