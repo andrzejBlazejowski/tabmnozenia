@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab2
+namespace Lab2.wektor
 {
 
     class Wektor
@@ -25,9 +25,9 @@ namespace Lab2
         public void show()
         {
             Console.Write("wspolrzedne wektora to: ");
-            for (int i = 0; i < n ; i++)
+            for (int i = 0; i < n; i++)
             {
-                Console.Write(wspolrzedne[i] +( i != n-1 ? ", ": ""));
+                Console.Write(wspolrzedne[i] + (i != n - 1 ? ", " : ""));
             }
             Console.WriteLine();
         }

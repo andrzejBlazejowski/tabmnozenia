@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab2
+namespace Lab2.wektor
 {
     public class Punkt
     {
@@ -18,10 +18,11 @@ namespace Lab2
         }
         public Punkt()
         {
-            this.x = 0;
-            this.y = 0;
+            x = 0;
+            y = 0;
         }
-        public void Wypisz() {
+        public void Wypisz()
+        {
             Console.WriteLine("x: {0}, y: {1}", x, y);
         }
     }

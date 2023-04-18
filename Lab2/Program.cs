@@ -1,9 +1,11 @@
-﻿using Lab2;
+﻿using Lab2.wektor;
+using Lab2.zamowienie;
+
 internal class Program
 {
     private static void Main(string[] args)
     {
-        testujWektor();
+        testujzamowienie();
     }
     static void testujOdcinek() 
     {
@@ -114,5 +116,34 @@ internal class Program
         Console.Write("Wektor 3 uzycie metody add: ");
         w3.show();
         Console.WriteLine();
+    }
+    static void testujProdukt()
+    {
+
+        Produkt produkt1 = new Produkt("serdelki", 5.50M, "sztuki", new DateTime(2022, 4, 18), 23, 23);
+        Console.WriteLine("produkt1");
+        produkt1.WypiszDane();
+        Produkt produkt2 = produkt1.Clone();
+        Console.WriteLine("produkt2");
+        produkt2.WypiszDane();
+        Produkt produkt3 = new Produkt();
+        Console.WriteLine("produkt3");
+        produkt3.WypiszDane();
+        Console.ReadLine();
+
+    }
+    static void testujSprzedaz()
+    {
+        Sprzedaz sprzedaz1 = new Sprzedaz("jabulko", 2, 12.50m);
+        sprzedaz1.wypisz();
+    }
+    static void testujzamowienie()
+    {
+
+        Zamowienie zamowienie = new Zamowienie(DateTime.Now, "Eustachy Rajski");
+        zamowienie.dodajPozycje("długopis", 2, 2.5M);
+        zamowienie.dodajPozycje(new Sprzedaz("woda", 1, 3.0M));
+
+        zamowienie.wypiszInformacje();
     }
 }

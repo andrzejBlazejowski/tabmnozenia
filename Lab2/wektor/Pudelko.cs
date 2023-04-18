@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab2
+namespace Lab2.wektor
 {
     public class Pudelko
     {
@@ -16,11 +16,11 @@ namespace Lab2
         {
             get
             {
-                return this.kolor;
+                return kolor;
             }
             set
             {
-                this.kolor = value;
+                kolor = value;
             }
         }
         private static int iloscStworzonychPudelek = 0;
@@ -28,26 +28,26 @@ namespace Lab2
 
         public void UstawSzerokosc(double szerokosc1)
         {
-            this.szerokosc = szerokosc1;
+            szerokosc = szerokosc1;
         }
 
         public double DajSzerokosc()
         {
-            return this.szerokosc;
+            return szerokosc;
         }
         public void UstawWysokosc(double wysokosc1)
         {
-            this.wysokosc = wysokosc1;
+            wysokosc = wysokosc1;
         }
 
         public double DajWysokosc()
         {
-            return this.wysokosc;
+            return wysokosc;
         }
 
         public double DajObjetosc()
         {
-            return this.wysokosc * this.szerokosc * this.glebokosc;
+            return wysokosc * szerokosc * glebokosc;
         }
 
         public static int dajIloscStworzonychPudelek()
@@ -57,28 +57,28 @@ namespace Lab2
 
         public Pudelko(double szerokosc1, double wysokosc1, double glebokosc1, string kolor1)
         {
-            this.szerokosc = szerokosc1;
-            this.wysokosc = wysokosc1;
-            this.glebokosc = glebokosc1;
-            this.Kolor = kolor1;
+            szerokosc = szerokosc1;
+            wysokosc = wysokosc1;
+            glebokosc = glebokosc1;
+            Kolor = kolor1;
 
             iloscStworzonychPudelek++;
         }
         public Pudelko()
         {
-            this.szerokosc = 0;
-            this.wysokosc = 0;
-            this.glebokosc = 0;
-            this.Kolor = "";
+            szerokosc = 0;
+            wysokosc = 0;
+            glebokosc = 0;
+            Kolor = "";
 
             iloscStworzonychPudelek++;
         }
         public Pudelko(Pudelko wzorPudelka)
         {
-            this.szerokosc = wzorPudelka.szerokosc;
-            this.wysokosc = wzorPudelka.wysokosc;
-            this.glebokosc = wzorPudelka.glebokosc;
-            this.Kolor = wzorPudelka.kolor;
+            szerokosc = wzorPudelka.szerokosc;
+            wysokosc = wzorPudelka.wysokosc;
+            glebokosc = wzorPudelka.glebokosc;
+            Kolor = wzorPudelka.kolor;
 
             iloscStworzonychPudelek++;
         }
