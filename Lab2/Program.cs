@@ -3,7 +3,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        testujOdcinek();
+        testujWektor();
     }
     static void testujOdcinek() 
     {
@@ -107,11 +107,11 @@ internal class Program
         w2.show();
         Console.WriteLine();
 
-        Console.Write("Suma współrzędnych wektora 1: ");
+        Console.Write("Suma wektora 1: ");
         Console.WriteLine(w1.sum());
 
         Wektor w3 = w1.add(w2);
-        Console.Write("Wektor 3 (wynik dodawania wektorów 1 i 2): ");
+        Console.Write("Wektor 3 uzycie metody add: ");
         w3.show();
         Console.WriteLine();
     }

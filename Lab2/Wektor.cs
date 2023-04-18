@@ -9,27 +9,27 @@ namespace Lab2
 
     class Wektor
     {
-        private int n; // liczba współrzędnych
-        private double[] wspolrzedne; // tablica współrzędnych
+        private int n;
+        private double[] wspolrzedne;
 
         public Wektor(int n, double[] dane)
         {
             this.n = n;
-            this.wspolrzedne = new double[n];
+            wspolrzedne = new double[n];
             for (int i = 0; i < n; i++)
             {
-                this.wspolrzedne[i] = dane[i];
+                wspolrzedne[i] = dane[i];
             }
         }
 
         public void show()
         {
-            Console.Write("(");
-            for (int i = 0; i < n - 1; i++)
+            Console.Write("wspolrzedne wektora to: ");
+            for (int i = 0; i < n ; i++)
             {
-                Console.Write(wspolrzedne[i] + ", ");
+                Console.Write(wspolrzedne[i] +( i != n-1 ? ", ": ""));
             }
-            Console.Write(wspolrzedne[n - 1] + ")");
+            Console.WriteLine();
         }
 
         public double sum()
@@ -42,16 +42,17 @@ namespace Lab2
             return suma;
         }
 
-        public Wektor add(Wektor w)
+        public Wektor add(Wektor scalar)
         {
-            if (this.n != w.n)
+            if (n != scalar.n)
             {
-                throw new ArgumentException("Wektory muszą mieć taką samą liczbę współrzędnych!");
+                Console.WriteLine("Nieprawidłowa długość wektora.");
+                return null;
             }
             double[] noweWspolrzedne = new double[n];
             for (int i = 0; i < n; i++)
             {
-                noweWspolrzedne[i] = this.wspolrzedne[i] + w.wspolrzedne[i];
+                noweWspolrzedne[i] = wspolrzedne[i] + scalar.wspolrzedne[i];
             }
             return new Wektor(n, noweWspolrzedne);
         }
