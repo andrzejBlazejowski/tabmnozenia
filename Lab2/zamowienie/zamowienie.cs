@@ -13,11 +13,13 @@ namespace Lab2.zamowienie
         private string nazwaKlienta;
         private Sprzedaz[] pozycjeZamowienia = new Sprzedaz[20];
         private int liczbaPozycji = 0;
+        private Transakcja[,] transakcje = new [][2];
 
         public Zamowienie(DateTime data, string klient)
         {
             dataRealizacji = data;
             nazwaKlienta = klient;
+            transakcje[1] = new Tra
         }
 
         public void dodajPozycje(Sprzedaz pozycja)
