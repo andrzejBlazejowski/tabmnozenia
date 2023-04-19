@@ -20,6 +20,39 @@ namespace Lab2.kurs
             Prowadzacy = prowadzacy;
             GrupyCwiczeniowe = grupyCwiczeniowe;
         }
+        public Kurs()
+        {
+            Console.Write("wpisz nazwę kursu: ");
+            this.Nazwa = Console.ReadLine();
+
+            Console.Write("wpisz liczbę godzin: ");
+            int.TryParse(Console.ReadLine(), out int liczbaGodzin);
+
+            Console.Write("wpisz imię prowadzącego: ");
+            string imie = Console.ReadLine();
+            Console.Write("wpisz nazwisko prowadzącego: ");
+            string nazwisko = Console.ReadLine();
+            this.Prowadzacy = new Osoba(imie, nazwisko, imie + '.' + nazwisko + "@gmail.com");
+
+            Console.Write("wpisz liczbę grup ćwiczeniowych: ");
+            int.TryParse(Console.ReadLine(), out int liczbaGrup);
+
+            this.GrupyCwiczeniowe = new Grupa[liczbaGrup];
+            for (int i = 0; i < liczbaGrup; i++)
+            {
+                Console.WriteLine($"Grupa {i + 1}:");
+                Console.Write("wpisz grupe: ");
+                string grupa = Console.ReadLine();
+                Console.Write("wpisz liczbę uczestników: ");
+                int.TryParse(Console.ReadLine(), out int liczbaUczestnikow);
+                Console.Write("wpisz imię prowadzącego: ");
+                imie = Console.ReadLine();
+                Console.Write("wpisz nazwisko prowadzącego: ");
+                nazwisko = Console.ReadLine();
+                Osoba prowadzacyGrupy = new Osoba(imie, nazwisko, imie+'.'+nazwisko+"@gmail.com");
+                this.GrupyCwiczeniowe[i] = new Grupa(grupa, liczbaUczestnikow);
+            }
+        }
 
         public void WypiszDane()
         {
