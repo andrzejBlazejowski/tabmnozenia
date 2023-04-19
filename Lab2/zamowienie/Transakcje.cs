@@ -9,7 +9,7 @@ namespace Lab2.zamowienie
     {
         private DateTime data;
         private string tytul;
-        private decimal kwota;
+        public decimal kwota { get; set; }
 
         public Transakcja(DateTime data, string tytul, decimal kwota)
         {

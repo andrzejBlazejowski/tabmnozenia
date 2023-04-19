@@ -150,12 +150,23 @@ internal class Program
     {
 
         Konto konto = new Konto("84382348238834", "Alojzy Tateusz", DateTime.Today);
+
+        for (int i = 0; i <= 500; i++)
+        {
+            konto.DodajTransakcje(new Transakcja(new DateTime(), "2222", 33.33M));
+        }
+        konto.DodajTransakcje(new Transakcja(new DateTime(), "custom", 44.44M));
+        for (int i = 0; i <= 1000; i++)
+        {
+            konto.DodajTransakcje(new Transakcja(new DateTime(), "2222", -33.33M));
+        }
+        konto.DodajTransakcje(new Transakcja(new DateTime(), "custom", -44.44M));
+
         konto.WypiszInformacje();
         Console.WriteLine(konto.ToString());
     }
     static void testujTransakcje()
     {
-
         Konto konto = new Konto("84382348238834", "Alojzy Tateusz", DateTime.Today);
         konto.WypiszInformacje();
         Console.WriteLine(konto.ToString());
