@@ -1,4 +1,5 @@
-﻿using Lab2.wektor;
+﻿using Lab2.kurs;
+using Lab2.wektor;
 using Lab2.zamowienie;
 
 internal class Program
@@ -171,5 +172,14 @@ internal class Program
         konto.WypiszInformacje();
         Console.WriteLine(konto.ToString());
     }
-
+    static void testujKurs()
+    {
+        Osoba prowadzacy = new Osoba("adreusz", "tate", "andreusz.tate@hotmail.com");
+        Grupa grupa1 = new Grupa("A", 30);
+        Grupa grupa2 = new Grupa("B", 30);
+        Grupa[] grupy = new Grupa[] { grupa1, grupa2 };
+        Kurs kurs = new Kurs("jakies ", 30, prowadzacy, grupy);
+        kurs.WypiszDane();
+        Console.ReadKey();
+    }
 }
