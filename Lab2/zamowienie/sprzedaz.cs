@@ -1,22 +1,22 @@
 ﻿
 namespace Lab2.zamowienie
 {
-    class Sprzedaz
+    public class Sprzedaz
     {
-        public string nazwa;
+        public Produkt produkt;
         public decimal cena;
         public int ilosc;
 
-        public Sprzedaz(string n, int i, decimal c)
+        public Sprzedaz(Produkt n, int i, decimal c)
         {
-            nazwa = n;
+            produkt = n;
             ilosc = i;
             cena = c;
         }
 
         public void wypisz()
         {
-            Console.WriteLine("Produkt: " + nazwa);
+            Console.WriteLine("Produkt: " + produkt.nazwa);
             Console.WriteLine("Cena: " + cena);
             Console.WriteLine("Ilość: " + ilosc);
         }

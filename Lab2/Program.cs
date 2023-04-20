@@ -136,7 +136,7 @@ internal class Program
     }
     static void testujSprzedaz()
     {
-        Sprzedaz sprzedaz1 = new Sprzedaz("jabulko", 2, 12.50m);
+        Sprzedaz sprzedaz1 = new Sprzedaz(new Produkt("serdelki", 5.50M, "sztuki", new DateTime(2022, 4, 18), 23, 23), 2, 12.50m);
         sprzedaz1.wypisz();
     }
     static void testujzamowienie()
@@ -144,7 +144,7 @@ internal class Program
 
         Zamowienie zamowienie = new Zamowienie(DateTime.Now, "Eustachy Rajski");
         zamowienie.dodajPozycje("długopis", 2, 2.5M);
-        zamowienie.dodajPozycje(new Sprzedaz("woda", 1, 3.0M));
+        zamowienie.dodajPozycje(new Sprzedaz(new Produkt("woda", 5.50M, "butelki", new DateTime(2022, 4, 18), 23, 23), 1, 3.0M));
 
         zamowienie.wypiszInformacje();
     }

@@ -1,7 +1,7 @@
 ﻿
-class Produkt
+public class Produkt
 {
-    private string nazwa;
+    public string nazwa { get; set; }
     private decimal cenaZakupu;
     private string jednostkaMiary;
     private DateTime dataZakupu;
