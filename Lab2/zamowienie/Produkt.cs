@@ -6,7 +6,7 @@ public class Produkt
     public string nazwa { get; set; }
     public decimal cenaZakupu { get; set; }
     public string jednostkaMiary { get; set; }
-    private DateTime dataZakupu;
+    protected DateTime dataZakupu;
     private decimal stawkaVAT;
     private decimal marza;
 
@@ -55,7 +55,7 @@ public class Produkt
         }
     }
 
-    public void WypiszDane()
+    public virtual void WypiszDane()
     {
         Console.WriteLine("Nazwa produktu: {0}", this.nazwa);
         Console.WriteLine("Cena zakupu: {0} zł", this.cenaZakupu);
