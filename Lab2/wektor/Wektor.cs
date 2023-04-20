@@ -77,6 +77,11 @@ namespace Lab2.wektor
             }
             return suma;
         }
+        public double this[int i]
+        {
+            get { return wspolrzedne[i]; }
+            set { wspolrzedne[i] = value; }
+        }
         public Wektor add(Wektor scalar)
         {
             if (n != scalar.n)

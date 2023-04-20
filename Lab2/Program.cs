@@ -143,7 +143,7 @@ internal class Program
     {
 
         Zamowienie zamowienie = new Zamowienie(DateTime.Now, "Eustachy Rajski");
-        zamowienie.dodajPozycje("długopis", 2, 2.5M);
+        zamowienie.dodajPozycje(new Produkt("serdelki", 5.50M, "sztuki", new DateTime(2022, 4, 18), 23, 23), 2, 2.5M);
         zamowienie.dodajPozycje(new Sprzedaz(new Produkt("woda", 5.50M, "butelki", new DateTime(2022, 4, 18), 23, 23), 1, 3.0M));
 
         zamowienie.wypiszInformacje();
@@ -151,7 +151,7 @@ internal class Program
     static void testujKonto()
     {
 
-        Konto konto = new Konto("84382348238834", "Alojzy Tateusz", DateTime.Today);
+        Konto konto = new Konto("84382348238834", new Osoba("Alojzy", "Tateusz", "a.tateusz", 80, 1.8), DateTime.Today);
 
         for (int i = 0; i <= 500; i++)
         {
@@ -169,13 +169,13 @@ internal class Program
     }
     static void testujTransakcje()
     {
-        Konto konto = new Konto("84382348238834", "Alojzy Tateusz", DateTime.Today);
+        Konto konto = new Konto("84382348238834", new Osoba("Alojzy", "Tateusz", "a.tateusz", 80, 1.8), DateTime.Today);
         konto.WypiszInformacje();
         Console.WriteLine(konto.ToString());
     }
     static void testujKurs()
     {
-        Osoba prowadzacy = new Osoba("adreusz", "tate", "andreusz.tate@hotmail.com");
+        Osoba prowadzacy = new Osoba("adreusz", "tate", "andreusz.tate@hotmail.com", 48, 1.5);
         Grupa grupa1 = new Grupa("A", 30);
         Grupa grupa2 = new Grupa("B", 30);
         Grupa[] grupy = new Grupa[] { grupa1, grupa2 };

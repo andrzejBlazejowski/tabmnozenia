@@ -26,9 +26,9 @@ namespace Lab2.zamowienie
             liczbaPozycji++;
         }
 
-        public void dodajPozycje(string nazwaProduktu, int ilosc, decimal cenaJednostkowa)
+        public void dodajPozycje(Produkt prod, int ilosc, decimal cenaJednostkowa)
         {
-            Sprzedaz pozycja = new Sprzedaz(nazwaProduktu, ilosc, cenaJednostkowa);
+            Sprzedaz pozycja = new Sprzedaz(prod, ilosc, cenaJednostkowa);
             pozycjeZamowienia[liczbaPozycji] = pozycja;
             liczbaPozycji++;
         }

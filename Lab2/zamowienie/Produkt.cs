@@ -1,9 +1,11 @@
 ﻿
+using System.Reflection;
+
 public class Produkt
 {
     public string nazwa { get; set; }
-    private decimal cenaZakupu;
-    private string jednostkaMiary;
+    public decimal cenaZakupu { get; set; }
+    public string jednostkaMiary { get; set; }
     private DateTime dataZakupu;
     private decimal stawkaVAT;
     private decimal marza;
@@ -24,10 +26,12 @@ public class Produkt
         this.nazwa = Console.ReadLine();
 
         Console.WriteLine("wpisz cenę zakupu produktu:");
-        while (!decimal.TryParse(Console.ReadLine(), out this.cenaZakupu))
+        decimal cenaZakupu ;
+        while (!decimal.TryParse(Console.ReadLine(), out cenaZakupu))
         {
             Console.WriteLine("Błędna wartość, wpisz cenę zakupu:");
         }
+        this.cenaZakupu = cenaZakupu;
 
         Console.WriteLine("wpisz jednostkę miary produktu:");
         this.jednostkaMiary = Console.ReadLine();
@@ -60,7 +64,50 @@ public class Produkt
         Console.WriteLine("Stawka VAT: {0}%", this.stawkaVAT);
         Console.WriteLine("Marża: {0} zł", this.marza);
     }
+    public decimal CenaDetaliczna()
+    {
+        decimal cenaNetto = cenaZakupu + cenaZakupu * stawkaVAT / 100;
+        decimal cenaDetaliczna = cenaNetto + marza;
+        return cenaDetaliczna;
+    }
 
+    public object this[string fieldName]
+    {
+        get
+        {
+            var field = this.GetType().GetField(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            if (field != null)
+            {
+                return field.GetValue(this);
+            }
+            else
+            {
+                var property = this.GetType().GetProperty(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                if (property != null)
+                {
+                    return property.GetValue(this);
+                }
+            }
+            throw new ArgumentException($"Nie znaleziono pola o nazwie {fieldName} w klasie {this.GetType().Name}");
+        }
+        set
+        {
+            var field = this.GetType().GetField(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            if (field != null)
+            {
+                field.SetValue(this, value);
+            }
+            else
+            {
+                var property = this.GetType().GetProperty(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                if (property != null)
+                {
+                    property.SetValue(this, value);
+                }
+            }
+            throw new ArgumentException($"Nie znaleziono pola o nazwie {fieldName} w klasie {this.GetType().Name}");
+        }
+    }
     public Produkt Clone()
     {
         return new Produkt(this.nazwa, this.cenaZakupu, this.jednostkaMiary, this.dataZakupu, this.stawkaVAT, this.marza);

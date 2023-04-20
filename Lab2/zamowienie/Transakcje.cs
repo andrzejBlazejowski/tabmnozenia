@@ -22,5 +22,11 @@ namespace Lab2.zamowienie
         {
             Console.WriteLine("Data: {0}, Tytuł: {1}, Kwota: {2:C}", data.ToString(), tytul, kwota);
         }
+
+
+        public override string ToString()
+        {
+            return $"Data: {data.ToString()}, Tytuł: {tytul}, Kwota: {kwota:C}";
+        }
     }
 }
