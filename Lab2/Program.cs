@@ -1,4 +1,5 @@
 ﻿using Lab2.kurs;
+using Lab2.narzedzia;
 using Lab2.wektor;
 using Lab2.zamowienie;
 
@@ -6,7 +7,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        testujKurs();
+        testujRandom();
     }
     static void testujOdcinek() 
     {
@@ -180,6 +181,15 @@ internal class Program
         Grupa[] grupy = new Grupa[] { grupa1, grupa2 };
         Kurs kurs = new Kurs("jakies ", 30, prowadzacy, grupy);
         kurs.WypiszDane();
+        Console.ReadKey();
+    }
+    static void testujRandom()
+    {
+        Console.WriteLine(RandomUtility.randomString(5));
+        Console.WriteLine(RandomUtility.randomInt(0, 15));
+        string[] arr = { "2", "d", "[", "h","g" };
+        string[] res = RandomUtility.randomFromArray(3, arr, false);
+        Console.WriteLine(string.Join("", res));
         Console.ReadKey();
     }
 }
