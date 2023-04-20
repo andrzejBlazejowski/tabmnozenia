@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 namespace Lab2.wektor
 {
 
-    class Wektor
+    public class Wektor
     {
-        private int n;
-        private double[] wspolrzedne;
+        public int n { get; set; }
+        public double[] Wspolrzedne { get; set; }
         private static char znakWypisywania;
         private static Random random = new Random();
         public Wektor(int n, double a, double b)
         {
             this.n = n;
-            this.wspolrzedne = new double[n];
+            this.Wspolrzedne = new double[n];
             for (int i = 0; i < n; i++)
             {
-                wspolrzedne[i] = random.NextDouble() * (b - a) + a;
+                Wspolrzedne[i] = random.NextDouble() * (b - a) + a;
             }
         }
         static Wektor()
@@ -31,16 +31,16 @@ namespace Lab2.wektor
         public Wektor(int n, double[] dane)
         {
             this.n = n;
-            wspolrzedne = new double[n];
+            Wspolrzedne = new double[n];
             for (int i = 0; i < n; i++)
             {
-                wspolrzedne[i] = dane[i];
+                Wspolrzedne[i] = dane[i];
             }
         }
         public Wektor(double[] dane)
         {
             this.n = dane.Length;
-            this.wspolrzedne = dane;
+            this.Wspolrzedne = dane;
         }
         public static Wektor zbudujWektor()
         {
@@ -57,12 +57,12 @@ namespace Lab2.wektor
             return new Wektor(dane);
         }
 
-        public void show()
+        public virtual void show()
         {
             Console.Write("wspolrzedne wektora to: "+ znakWypisywania);
             for (int i = 0; i < n; i++)
             {
-                Console.Write(wspolrzedne[i] + (i != n - 1 ? ", " : ""));
+                Console.Write(Wspolrzedne[i] + (i != n - 1 ? ", " : ""));
             }
             Console.Write(znakWypisywania);
             Console.WriteLine();
@@ -73,14 +73,14 @@ namespace Lab2.wektor
             double suma = 0;
             for (int i = 0; i < n; i++)
             {
-                suma += wspolrzedne[i];
+                suma += Wspolrzedne[i];
             }
             return suma;
         }
         public double this[int i]
         {
-            get { return wspolrzedne[i]; }
-            set { wspolrzedne[i] = value; }
+            get { return Wspolrzedne[i]; }
+            set { Wspolrzedne[i] = value; }
         }
         public Wektor add(Wektor scalar)
         {
@@ -92,7 +92,7 @@ namespace Lab2.wektor
             double[] noweWspolrzedne = new double[n];
             for (int i = 0; i < n; i++)
             {
-                noweWspolrzedne[i] = wspolrzedne[i] + scalar.wspolrzedne[i];
+                noweWspolrzedne[i] = Wspolrzedne[i] + scalar.Wspolrzedne[i];
             }
             return new Wektor(n, noweWspolrzedne);
         }
