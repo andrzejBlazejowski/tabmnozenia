@@ -22,6 +22,9 @@ namespace Kurs
             Console.WriteLine("isGreaterThan: {0}", isGreaterThan);
             Console.WriteLine("isLessThan: {0}", isLessThan);
 
+            Console.WriteLine();
+            Console.WriteLine("naciśnij klawisz aby kontynuować");
+            Console.ReadKey();
 
             Grupa grupa = new Grupa("Grupa1", 10);
             grupa.LiczbaMiejsc = 15;
@@ -37,6 +40,21 @@ namespace Kurs
             Grupa.Potok potok = new Grupa.Potok("INF/D/INŻ/A");
             string kodGrupy = potok.GenerujKodGrupy(2009);
             Console.WriteLine("Kod grupy: " + kodGrupy);
+
+
+            Console.WriteLine();
+            Console.WriteLine("naciśnij klawisz aby kontynuować");
+            Console.ReadKey();
+
+
+
+            Osoba pracownik = new Osoba("Jan", "Kowalski", "jan.kowalski@example.com");
+
+            pracownik.PrzypiszAdres("ul. Główna 10", "Warszawa", "00-000");
+
+            pracownik.WypiszDaneZAdresem();
+
+            Console.ReadKey();
         }
     }
 }
