@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab2", "Lab2\Lab2.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab3", "Lab3\Lab3.csproj", "{6BD783A9-0AC1-42CA-AB15-F02A49CDB79B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zadania4", "zadania4\zadania4.csproj", "{A64CB054-E3C1-439C-B031-EDFFD9A35194}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "zadania4", "zadania4\zadania4.csproj", "{A64CB054-E3C1-439C-B031-EDFFD9A35194}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wektor", "Wektor\Wektor.csproj", "{1CE4499E-F86D-409E-B192-36E4D95A4D05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{A64CB054-E3C1-439C-B031-EDFFD9A35194}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A64CB054-E3C1-439C-B031-EDFFD9A35194}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A64CB054-E3C1-439C-B031-EDFFD9A35194}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CE4499E-F86D-409E-B192-36E4D95A4D05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CE4499E-F86D-409E-B192-36E4D95A4D05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CE4499E-F86D-409E-B192-36E4D95A4D05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CE4499E-F86D-409E-B192-36E4D95A4D05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
