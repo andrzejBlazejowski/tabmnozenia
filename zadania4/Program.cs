@@ -11,6 +11,7 @@ namespace tabmnozenia
             testujLWymierna();
 
             testZespolone();
+            testujHarmonogram();
         }
 
         public static void testZespolone()
@@ -65,6 +66,55 @@ namespace tabmnozenia
             LWymierna negacja = liczba1.minus();
             Console.WriteLine("Negacja liczby 1: ");
             negacja.wypiszUlamek();
+        }
+        public static void testujHarmonogram()
+        {
+
+            Zajecia[] mojHarmonogram = new Zajecia[5];
+
+            mojHarmonogram[0] = new Zajecia("Matematyka", "MAT", DzienTygodnia.Poniedzialek, 8, "A101", Zaliczenie.Zaliczenie);
+            mojHarmonogram[1] = new Zajecia("Informatyka", "INF", DzienTygodnia.Wtorek, 10, "B202", Zaliczenie.Egzamin);
+            mojHarmonogram[2] = new Zajecia("Angielski", "ANG", DzienTygodnia.Sroda, 14, "C303", Zaliczenie.Zaliczenie);
+            mojHarmonogram[3] = new Zajecia("Programowanie", "PROG", DzienTygodnia.Czwartek, 16, "D404", Zaliczenie.Egzamin);
+            mojHarmonogram[4] = new Zajecia("Ekonomia", "EKO", DzienTygodnia.Piatek, 12, "E505", Zaliczenie.Zaliczenie);
+
+            Console.WriteLine("Harmonogram zajec:");
+            Console.WriteLine();
+
+            foreach (Zajecia zajecia in mojHarmonogram)
+            {
+                zajecia.WypiszInformacje();
+            }
+
+            Console.WriteLine("Harmonogram wedlug dni tygodnia:");
+            Console.WriteLine();
+
+
+            // Sortowanie harmonogramu według dnia tygodnia, a następnie godziny
+            Array.Sort(mojHarmonogram, (x, y) =>
+            {
+                int result = x.dzien.CompareTo(y.dzien);
+                if (result == 0)
+                    result = x.godzina.CompareTo(y.godzina);
+                return result;
+            });
+
+            DzienTygodnia obecnyDzien = mojHarmonogram[0].dzien;
+
+            foreach (Zajecia zajecia in mojHarmonogram)
+            {
+                if (zajecia.dzien != obecnyDzien)
+                {
+                    Console.WriteLine();
+                    obecnyDzien = zajecia.dzien;
+                }
+
+                Console.WriteLine("Dzien: {0}", obecnyDzien);
+                Console.WriteLine("Godzina: {0}", zajecia.godzina);
+                zajecia.WypiszInformacje();
+            }
+
+            Console.ReadLine();
         }
     }
 
