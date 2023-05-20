@@ -8,6 +8,8 @@ namespace tabmnozenia
     {
         static void Main()
         {
+            testujLWymierna();
+
             testZespolone();
         }
 
@@ -20,6 +22,51 @@ namespace tabmnozenia
             LiczbaZespolona z3 = z1 + z2;
             Console.WriteLine("z3 = {0} + {1}i", z3.Re, z3.Im);
         }
+
+        public static void testujLWymierna()
+        {
+            LWymierna liczba1 = new LWymierna(17, 2);
+            LWymierna liczba2 = new LWymierna(14);
+            LWymierna liczba3 = new LWymierna();
+
+            Console.WriteLine("Liczba 1: ");
+            liczba1.wypiszUlamek();
+
+            Console.WriteLine("Liczba 2: ");
+            liczba2.wypiszUlamek(); 
+
+            Console.WriteLine("Liczba 3: ");
+            liczba3.wypiszUlamek(); 
+
+            Console.WriteLine();
+
+            LWymierna suma = liczba1.dodaj(liczba2);
+            Console.WriteLine("Suma: ");
+
+            LWymierna roznica = liczba1.odjac(liczba2);
+            Console.WriteLine("Różnica: ");
+
+            LWymierna iloczyn = liczba1.razy(liczba2);
+            Console.WriteLine("Iloczyn: ");
+
+            LWymierna iloraz = liczba1.dziel(liczba2);
+            Console.WriteLine("Iloraz: ");
+
+            Console.WriteLine();
+
+            bool mniejsza = liczba1.mniejsze(liczba2);
+            Console.WriteLine("Czy liczba 1 jest mniejsza od liczby 2? " + mniejsza);
+
+            bool wieksza = liczba1.wieksze(liczba2);
+            Console.WriteLine("Czy liczba 1 jest większa od liczby 2? " + wieksza); 
+
+            Console.WriteLine();
+
+            LWymierna negacja = liczba1.minus();
+            Console.WriteLine("Negacja liczby 1: ");
+            negacja.wypiszUlamek();
+        }
     }
+
 }
 
