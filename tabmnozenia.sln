@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wektor", "Wektor\Wektor.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kurs", "Kurs\Kurs.csproj", "{0DE38C76-10FC-49BE-99C3-BD6FA7AAF0EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Produkt", "Produkt\Produkt.csproj", "{EB37E8CC-203A-4138-9FD5-6054547EFEA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{0DE38C76-10FC-49BE-99C3-BD6FA7AAF0EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DE38C76-10FC-49BE-99C3-BD6FA7AAF0EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DE38C76-10FC-49BE-99C3-BD6FA7AAF0EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB37E8CC-203A-4138-9FD5-6054547EFEA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB37E8CC-203A-4138-9FD5-6054547EFEA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB37E8CC-203A-4138-9FD5-6054547EFEA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB37E8CC-203A-4138-9FD5-6054547EFEA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
