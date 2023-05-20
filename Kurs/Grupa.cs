@@ -1,90 +1,97 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Kurs
+﻿public class Grupa
 {
-    public class Grupa
+    public struct Potok
     {
-        public string Nazwa { get; set; }
-        public int LiczbaStudentow { get; set; }
-        private string[] członkowie = new string[10];
+        public string OznaczenieGrupy { get; set; }
 
-        public Grupa(string nazwa, int liczbaStudentow)
+        public Potok(string oznaczenieGrupy)
         {
-            Nazwa = nazwa;
-            LiczbaStudentow = liczbaStudentow;
+            OznaczenieGrupy = oznaczenieGrupy;
         }
 
-        public int LiczbaMiejsc
+        public string GenerujKodGrupy(int rokRozpoczecia)
         {
-            get { return członkowie.Length; }
-            set
+            int rokZakonczenia = rokRozpoczecia + 1;
+            return $"{OznaczenieGrupy} {rokRozpoczecia}/{rokZakonczenia}";
+        }
+    }
+
+    public string Nazwa { get; set; }
+    public int LiczbaStudentow { get; set; }
+    private string[] członkowie = new string[10];
+
+    public Grupa(string nazwa, int liczbaStudentow)
+    {
+        Nazwa = nazwa;
+        LiczbaStudentow = liczbaStudentow;
+    }
+
+    public int LiczbaMiejsc
+    {
+        get { return członkowie.Length; }
+        set
+        {
+            if (value > członkowie.Length)
             {
-                if (value > członkowie.Length)
+                Array.Resize(ref członkowie, value);
+            }
+            else if (value < członkowie.Length)
+            {
+                int emptySlots = członkowie.Length - LiczbaStudentow;
+                if (value < emptySlots)
                 {
-                    Array.Resize(ref członkowie, value);
+                    throw new ArgumentException("Not enough empty slots to resize the array");
                 }
-                else if (value < członkowie.Length)
+
+                for (int i = 0; i < członkowie.Length && emptySlots > 0; i++)
                 {
-                    int emptySlots = członkowie.Length - LiczbaStudentow;
-                    if (value < emptySlots)
+                    if (członkowie[i] == null)
                     {
-                        throw new ArgumentException("Not enough empty slots to resize the array");
-                    }
-
-                    for (int i = 0; i < członkowie.Length && emptySlots > 0; i++)
-                    {
-                        if (członkowie[i] == null)
+                        int j = i + 1;
+                        while (j < członkowie.Length && członkowie[j] == null)
                         {
-                            int j = i + 1;
-                            while (j < członkowie.Length && członkowie[j] == null)
-                            {
-                                j++;
-                            }
+                            j++;
+                        }
 
-                            if (j < członkowie.Length)
-                            {
-                                członkowie[i] = członkowie[j];
-                                członkowie[j] = null;
-                                emptySlots--;
-                            }
+                        if (j < członkowie.Length)
+                        {
+                            członkowie[i] = członkowie[j];
+                            członkowie[j] = null;
+                            emptySlots--;
                         }
                     }
-
-                    Array.Resize(ref członkowie, value);
                 }
+
+                Array.Resize(ref członkowie, value);
             }
         }
+    }
 
-        public override string ToString()
-        {
-            return $"{Nazwa} ({LiczbaStudentow} studentów)";
-        }
+    public override string ToString()
+    {
+        return $"{Nazwa} ({LiczbaStudentow} studentów)";
+    }
 
-        public static Grupa operator -(Grupa group, string member)
+    public static Grupa operator -(Grupa group, string member)
+    {
+        for (int i = 0; i < group.członkowie.Length; i++)
         {
-            for (int i = 0; i < group.członkowie.Length; i++)
+            if (group.członkowie[i] == member)
             {
-                if (group.członkowie[i] == member)
-                {
-                    group.członkowie[i] = null;
-                    group.LiczbaStudentow--;
-                }
+                group.członkowie[i] = null;
+                group.LiczbaStudentow--;
             }
-            return group;
         }
+        return group;
+    }
 
-        public static bool operator >(Grupa group1, Grupa group2)
-        {
-            return group1.LiczbaMiejsc > group2.LiczbaMiejsc;
-        }
+    public static bool operator >(Grupa group1, Grupa group2)
+    {
+        return group1.LiczbaMiejsc > group2.LiczbaMiejsc;
+    }
 
-        public static bool operator <(Grupa group1, Grupa group2)
-        {
-            return group1.LiczbaStudentow < group2.LiczbaStudentow;
-        }
+    public static bool operator <(Grupa group1, Grupa group2)
+    {
+        return group1.LiczbaStudentow < group2.LiczbaStudentow;
     }
 }
