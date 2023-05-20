@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Lab2.zamowienie
-{    public class Transakcja
+{    
+    public class Transakcja
     {
-        private DateTime data;
+        protected DateTime data;
         private string tytul;
         public decimal kwota { get; set; }
 
@@ -18,7 +19,7 @@ namespace Lab2.zamowienie
             this.kwota = kwota;
         }
 
-        public void WypiszInformacje()
+        public virtual void WypiszInformacje()
         {
             Console.WriteLine("Data: {0}, Tytuł: {1}, Kwota: {2:C}", data.ToString(), tytul, kwota);
         }

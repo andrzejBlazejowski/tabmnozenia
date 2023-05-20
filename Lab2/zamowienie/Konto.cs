@@ -12,7 +12,7 @@ namespace Lab2.zamowienie
     public class Konto
     {
         private Osoba wlasciciel;
-        private string numerKonta;
+        public string numerKonta { get; set; }
         private DateTime dataUtworzenia;
         private Transakcja[][] transakcje = new Transakcja[2][];
         private int liczbaObciazen = 0;
