@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Wektor
 {
 
-    public class Wektor
+    public class Wektor : IStatystyka
     {
         public int n { get; set; }
         public double[] Wspolrzedne { get; set; }
@@ -55,6 +55,35 @@ namespace Wektor
             }
 
             return new Wektor(dane);
+        }
+
+        public double Suma()
+        {
+            double suma = 0;
+            for (int i = 0; i < n; i++)
+            {
+                suma += Wspolrzedne[i];
+            }
+            return suma;
+        }
+
+        public double Srednia()
+        {
+            double suma = Suma();
+            return suma / n;
+        }
+
+        public double Max()
+        {
+            double max = double.MinValue;
+            for (int i = 0; i < n; i++)
+            {
+                if (Wspolrzedne[i] > max)
+                {
+                    max = Wspolrzedne[i];
+                }
+            }
+            return max;
         }
 
         public virtual void show()
