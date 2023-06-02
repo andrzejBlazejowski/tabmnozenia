@@ -20,10 +20,24 @@ public class Grupa
         }
     }
     public event EventHandler<CzlonkowieEventArgs> SprawdzanieObecnosci;
+    public delegate void SpotkanieDelegate(string opisWydarzenia);
 
     public void ZglosObecnosc(string imie, string nazwisko)
     {
         OnSprawdzanieObecnosci(new CzlonkowieEventArgs(imie, nazwisko));
+    }
+
+
+    public event EventHandler<SpotkanieEventArgs> Spotkanie;
+
+    public void ZwolajSpotkanie(string opisWydarzenia)
+    {
+        OnSpotkanie(new SpotkanieEventArgs(opisWydarzenia));
+    }
+
+    protected virtual void OnSpotkanie(SpotkanieEventArgs e)
+    {
+        Spotkanie?.Invoke(this, e);
     }
 
     protected virtual void OnSprawdzanieObecnosci(CzlonkowieEventArgs e)
@@ -151,5 +165,16 @@ public class CzlonkowieEventArgs : EventArgs
     {
         Imie = imie;
         Nazwisko = nazwisko;
+    }
+}
+
+
+public class SpotkanieEventArgs : EventArgs
+{
+    public string OpisWydarzenia { get; }
+
+    public SpotkanieEventArgs(string opisWydarzenia)
+    {
+        OpisWydarzenia = opisWydarzenia;
     }
 }
