@@ -73,6 +73,21 @@ namespace Wektor
             return suma / n;
         }
 
+        public static explicit operator double(Wektor vector)
+        {
+            double sum = 0;
+            for (int i = 0; i < vector.n; i++)
+            {
+                sum += vector.Wspolrzedne[i];
+            }
+            return sum;
+        }
+
+        public static implicit operator Wektor(double value)
+        {
+            return new Wektor(1, value, value);
+        }
+
         public double Max()
         {
             double max = double.MinValue;

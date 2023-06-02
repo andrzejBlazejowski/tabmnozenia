@@ -47,6 +47,7 @@ class Program
         zestawienieProduktow.GenerujZestawienie();
 
         TestujKolekcjeT();
+
         Console.ReadLine();
     }
 
@@ -68,6 +69,14 @@ class Program
         listaLiczb.Sort();
 
         WyswietlListe(listaLiczb);
+
+        MojaData data1 = new MojaData(new DateTime(1990, 5, 20));
+        int lata = data1;
+        Console.WriteLine("Lata: " + lata);
+
+        MojaData data2 = new MojaData(new DateTime(1995, 12, 31));
+        float lataFloat = (float)data2; 
+        Console.WriteLine("Lata (z ułamkiem): " + lataFloat);
 
         Console.ReadLine();
     }
