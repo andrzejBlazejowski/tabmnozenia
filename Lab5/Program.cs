@@ -46,7 +46,39 @@ class Program
         Zestawienie<Produkt> zestawienieProduktow = new Zestawienie<Produkt>(produkty);
         zestawienieProduktow.GenerujZestawienie();
 
+        TestujKolekcjeT();
         Console.ReadLine();
+    }
+
+
+    static void TestujKolekcjeT()
+    {
+        List<int> listaLiczb = new List<int>() { 5, 10, 15, 20, 25 };
+
+        WyswietlListe(listaLiczb);
+
+        listaLiczb.Insert(2, 12);
+
+        WyswietlListe(listaLiczb);
+
+        listaLiczb.RemoveAt(1);
+        listaLiczb.Remove(15);
+        WyswietlListe(listaLiczb);
+
+        listaLiczb.Sort();
+
+        WyswietlListe(listaLiczb);
+
+        Console.ReadLine();
+    }
+
+    static void WyswietlListe(List<int> lista)
+    {
+        foreach (var element in lista)
+        {
+            Console.Write(element + " ");
+        }
+        Console.WriteLine();
     }
 }
 
