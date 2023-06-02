@@ -48,9 +48,44 @@ class Program
 
         TestujKolekcjeT();
 
+
+        Grupa grupa1 = new Grupa("Grupa 1", WypiszMetoda1);
+        Grupa grupa2 = new Grupa("Grupa 2", WypiszMetoda2);
+        Grupa grupa3 = new Grupa("Grupa 3", WypiszMetoda3);
+
+        grupa1.Wypisz();
+        grupa2.Wypisz2();
+        grupa3.Wypisz3();
+
+
+        Grupa grupa = new Grupa("Grupa 1", WypiszMetoda1);
+
+        grupa.SprawdzanieObecnosci += (imie, nazwisko) =>
+        {
+            Console.WriteLine("Sprawdzanie obecności dla: " + imie + " " + nazwisko);
+        };
+
+        grupa.SprawdzObecnosc("Jan", "Kowalski");
+        grupa.SprawdzObecnosc("Anna", "Nowak");
+
+
         Console.ReadLine();
     }
 
+    public static void WypiszMetoda1()
+    {
+        Console.WriteLine("Wywołano WypiszMetoda1()");
+    }
+
+    public static void WypiszMetoda2()
+    {
+        Console.WriteLine("Wywołano WypiszMetoda2()");
+    }
+
+    public static void WypiszMetoda3()
+    {
+        Console.WriteLine("Wywołano WypiszMetoda3()");
+    }
 
     static void TestujKolekcjeT()
     {
@@ -77,9 +112,56 @@ class Program
         MojaData data2 = new MojaData(new DateTime(1995, 12, 31));
         float lataFloat = (float)data2; 
         Console.WriteLine("Lata (z ułamkiem): " + lataFloat);
+        
+        
+        StringIntDelegate delegateObj = null;
+
+        delegateObj += DelegationExample.AppendNumber;
+        delegateObj += DelegationExample.RepeatString;
+        delegateObj += DelegationExample.GetSubstring;
+
+        string result = delegateObj.Invoke("Hello", 3);
+
+        Console.WriteLine(result);
+
 
         Console.ReadLine();
     }
+        public static void testCalculationDelegate()
+    {
+        Console.WriteLine("Podaj trzy liczby:");
+
+        double num1 = double.Parse(Console.ReadLine());
+        double num2 = double.Parse(Console.ReadLine());
+        double result = double.Parse(Console.ReadLine());
+
+        CalculationDelegate calculationDelegate = null;
+
+        calculationDelegate += Calculator.Add;
+        calculationDelegate += Calculator.Subtract;
+        calculationDelegate += Calculator.Multiply;
+        calculationDelegate += Calculator.Divide;
+
+        double closestResult = double.MaxValue;
+        string closestOperation = string.Empty;
+
+        foreach (CalculationDelegate calc in calculationDelegate.GetInvocationList())
+        {
+            double calculatedResult = calc.Invoke(num1, num2);
+            double difference = Math.Abs(calculatedResult - result);
+
+            if (difference < Math.Abs(closestResult - result))
+            {
+                closestResult = calculatedResult;
+                closestOperation = calc.Method.Name;
+            }
+        }
+
+        Console.WriteLine($"Najbliższe działanie to: {num1} {closestOperation} {num2} = {closestResult}");
+    }
+
+
+
 
     static void WyswietlListe(List<int> lista)
     {

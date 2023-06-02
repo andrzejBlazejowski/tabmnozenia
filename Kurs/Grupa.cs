@@ -1,4 +1,8 @@
-﻿public class Grupa
+﻿
+public delegate void SprawdzanieObecnosciDelegate(string imie, string nazwisko);
+public delegate void WypiszDelegate();
+
+public class Grupa
 {
     public struct Potok
     {
@@ -15,17 +19,59 @@
             return $"{OznaczenieGrupy} {rokRozpoczecia}/{rokZakonczenia}";
         }
     }
+    public event EventHandler<CzlonkowieEventArgs> SprawdzanieObecnosci;
+
+    public void ZglosObecnosc(string imie, string nazwisko)
+    {
+        OnSprawdzanieObecnosci(new CzlonkowieEventArgs(imie, nazwisko));
+    }
+
+    protected virtual void OnSprawdzanieObecnosci(CzlonkowieEventArgs e)
+    {
+        SprawdzanieObecnosci?.Invoke(this, e);
+    }
 
     public string Nazwa { get; set; }
     public int LiczbaStudentow { get; set; }
     private string[] członkowie = new string[10];
+    public WypiszDelegate MetodaWypisywania { get; set; }
 
     public Grupa(string nazwa, int liczbaStudentow)
     {
         Nazwa = nazwa;
         LiczbaStudentow = liczbaStudentow;
     }
+    public void SprawdzObecnosc(string imie, string nazwisko)
+    {
+        Console.WriteLine("Sprawdzanie obecności dla grupy " + Nazwa);
+        SprawdzanieObecnosci?.Invoke(this, new CzlonkowieEventArgs(imie, nazwisko));
+        Console.WriteLine();
+    }
+    public Grupa(string nazwa, WypiszDelegate metodaWypisywania)
+    {
+        Nazwa = nazwa;
+        MetodaWypisywania = metodaWypisywania;
+    }
+    public void Wypisz()
+    {
+        Console.WriteLine("Metoda Wypisz() dla grupy " + Nazwa);
+        MetodaWypisywania.Invoke();
+        Console.WriteLine();
+    }
 
+    public void Wypisz2()
+    {
+        Console.WriteLine("Metoda Wypisz2() dla grupy " + Nazwa);
+        MetodaWypisywania.Invoke();
+        Console.WriteLine();
+    }
+
+    public void Wypisz3()
+    {
+        Console.WriteLine("Metoda Wypisz3() dla grupy " + Nazwa);
+        MetodaWypisywania.Invoke();
+        Console.WriteLine();
+    }
     public int LiczbaMiejsc
     {
         get { return członkowie.Length; }
@@ -93,5 +139,17 @@
     public static bool operator <(Grupa group1, Grupa group2)
     {
         return group1.LiczbaStudentow < group2.LiczbaStudentow;
+    }
+}
+
+public class CzlonkowieEventArgs : EventArgs
+{
+    public string Imie { get; }
+    public string Nazwisko { get; }
+
+    public CzlonkowieEventArgs(string imie, string nazwisko)
+    {
+        Imie = imie;
+        Nazwisko = nazwisko;
     }
 }
