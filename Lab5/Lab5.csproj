@@ -7,4 +7,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Kurs\Kurs.csproj" />
+    <ProjectReference Include="..\Produkt\Produkt.csproj" />
+    <ProjectReference Include="..\tabmnozenia\tabmnozenia.csproj" />
+    <ProjectReference Include="..\Wektor\Wektor.csproj" />
+  </ItemGroup>
+
 </Project>
